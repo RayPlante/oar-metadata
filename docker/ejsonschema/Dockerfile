@@ -1,4 +1,4 @@
-FROM oarmeta/jq:latest
+FROM oar-metadata/jq
 
 RUN apt-get update && apt-get install -y python python-pip python-dev unzip
 RUN pip install json-spec jsonschema requests pynoid filelock
