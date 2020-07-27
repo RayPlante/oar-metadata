@@ -200,12 +200,10 @@ class DataCiteDOIClient(object):
                 prefix = self.default_prefix
         doipath = prefix + '/' + doipath
         ro = prefix not in self.prefs
-        import sys
         if self.prefs:
-            print("%s==%s: %s" % (prefix, self.prefs[0], str(prefix==self.prefs[0])),
-                  file=sys.stderr)
+            print("%s==%s: %s" % (prefix, self.prefs[0], str(prefix==self.prefs[0])))
         else:
-            print("No prefixes are set: %s" % str(self.prefs), file=sys.stderr)
+            print("No prefixes are set: %s" % str(self.prefs))
 
         resp = self._request("GET", self._ep+doipath, doipath)
         resj = self._to_json(resp, doipath)
