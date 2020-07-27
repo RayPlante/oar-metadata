@@ -6,6 +6,7 @@ handles an type of DOI in a generic way.  This module specifically addresses
 DataCite DOIs with a focus on creating them and updating their metadata via 
 DataCite services.  
 """
+from __future__ import print_function
 import re
 from collections import OrderedDict, Mapping
 from copy import deepcopy
@@ -199,6 +200,12 @@ class DataCiteDOIClient(object):
                 prefix = self.default_prefix
         doipath = prefix + '/' + doipath
         ro = prefix not in self.prefs
+        import sys
+        if self.prefs:
+            print("%s==%s: %s" % (prefix, self.prefs[0], str(prefix==self.prefs[0])),
+                  file=sys.stderr)
+        else:
+            print("No prefixes are set: %s" % str(self.prefs), file=sys.stderr)
 
         resp = self._request("GET", self._ep+doipath, doipath)
         resj = self._to_json(resp, doipath)
