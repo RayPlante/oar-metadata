@@ -202,6 +202,8 @@ class DataCiteDOIClient(object):
         ro = prefix not in self.prefs
         if self.prefs:
             print("%s==%s: %s" % (prefix, self.prefs[0], str(prefix==self.prefs[0])))
+            print("type(prefix)=%s, type(prefs[0])=%s" % (str(type(prefix)),
+                                                          str(type(self.prefs[0]))))
         else:
             print("No prefixes are set: %s" % str(self.prefs))
 
